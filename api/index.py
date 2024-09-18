@@ -198,8 +198,8 @@ def get_and_play_word(wordNum):
     except Exception:
         audio_data = open(error_file_path, 'rb').read()
 
-    if random.random() < .003:
-        audio_data = open(error_file_path, 'rb').read()
+    # if random.random() < .003:
+    #     audio_data = open(error_file_path, 'rb').read()
         # We're pranking Aarush
     
 
