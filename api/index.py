@@ -125,6 +125,7 @@ def index():
             return render_template("index.html", file_names=file_names, error_message=f"Failed to load word list from '{filename}'.")
 
         main_contest_word_IDS = rng_word_ids(start_index, end_index, num_words)
+        # main_contest_word_IDS = ()
         main_contest_words = select_words(word_list, main_contest_word_IDS)
         
         if not main_contest_words or not main_contest_word_IDS:
@@ -159,7 +160,7 @@ def contest():
 
         else:
             if current_word_idx < len(main_contest_words):
-                wrong_words.append((current_word_idx, main_contest_words[current_word_idx], user_input))
+                wrong_words.append((main_contest_word_IDS[current_word_idx], main_contest_words[current_word_idx], user_input))
                 audio_data = get_and_play_word(main_contest_word_IDS[current_word_idx])
                 timestamp = int(time.time())
                 audio_url = f"/pronounce?timestamp={timestamp}"
