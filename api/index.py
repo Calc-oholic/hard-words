@@ -124,8 +124,8 @@ def index():
         if not word_list:
             return render_template("index.html", file_names=file_names, error_message=f"Failed to load word list from '{filename}'.")
 
-        main_contest_word_IDS = rng_word_ids(start_index, end_index, num_words)
-        # main_contest_word_IDS = (296, 326, 257, 280, 344, 344, 327, 370, 320, 388, 359, 290, 226, 226, 323, 314, 223, 235, 334, 284, 373, 311, 397, 203, 204, 300, 220, 305, 202, 276, 242, 384, 378, 231, 338, 234, 328, 297, 240, 299, 229, 229, 355, 274,
+        # main_contest_word_IDS = rng_word_ids(start_index, end_index, num_words)
+        main_contest_word_IDS = (296, 326, 257, 280, 344, 344, 327, 370, 320, 388, 359, 290, 226, 226, 323, 314, 223, 235, 334, 284, 373, 311, 397, 203, 204, 300, 220, 305, 202, 276, 242, 384, 378, 231, 338, 234, 328, 297, 240, 299, 229, 229, 355, 274,479, 474, 492, 482, 459, 407, 411, 475, 436, 488, 450, 449, 476, 421, 444, 434, 422, 581, 506, 533, 558, 576, 550, 573, 563, 593, 584, 517, 630, 644, 602, 652, 691, 686, 619, 677, 675, 642, 621, 651, 671, 661, 654, 700, 640, 650, 618, 672)
         main_contest_words = select_words(word_list, main_contest_word_IDS)
         
         if not main_contest_words or not main_contest_word_IDS:
@@ -239,20 +239,3 @@ def alt_pronounce_word():
 
 if __name__ == "__main__":
     app.run(debug=True)
-# (479, 'fomite', 'phomite')
-# (474, 'floribunda', 'florabunda')
-# (492, 'galantine', 'gallentine')
-# (482, 'formaldehyde', 'formaldyhide')
-# (459, 'febrifacient', 'febrefacient')
-# (407, 'epergne', 'epurn')
-# (411, 'epistolary', 'epistollary')
-# (475, 'fluky, flukey', 'fluky')
-# (436, 'exegete', 'exigete')
-# (488, 'fumarole', 'fumarol')
-# (450, 'façadism, facadism', 'facadism')
-# (449, 'exuviae', 'exiviae')
-# (476, 'fluoroscopy', 'flouroscopy')
-# (421, 'Essene', 'essecene')
-# (444, 'exscind', 'excind')
-# (434, 'excrescence', 'exgressence')
-# (422, 'Ethiopian', 'ethiopian')
