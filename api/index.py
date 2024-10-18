@@ -100,7 +100,7 @@ def check_word(user_input):
         
         user_inputs = [input.strip() for input in user_input.split(",")]
 
-        if all(input in correct_words for input in user_inputs):
+        if all(input in correct_words for input in user_inputs) and all(answer in user_inputs for answer in correct_words):
             return True
         else:
             feedback = f"Incorrect. Correct answer: '{', '.join(correct_words)}'"
