@@ -125,7 +125,7 @@ def index():
             return render_template("index.html", file_names=file_names, error_message=f"Failed to load word list from '{filename}'.")
 
         main_contest_word_IDS = rng_word_ids(start_index, end_index, num_words)
-        # main_contest_word_IDS = ()
+        # main_contest_word_IDS = (296, 326, 257, 280, 344, 344, 327, 370, 320, 388, 359, 290, 226, 226, 323, 314, 223, 235, 334, 284, 373, 311, 397, 203, 204, 300, 220, 305, 202, 276, 242, 384, 378, 231, 338, 234, 328, 297, 240, 299, 229, 229, 355, 274,
         main_contest_words = select_words(word_list, main_contest_word_IDS)
         
         if not main_contest_words or not main_contest_word_IDS:
