@@ -159,7 +159,7 @@ def contest():
 
         else:
             if current_word_idx < len(main_contest_words):
-                wrong_words.append((main_contest_words[current_word_idx], user_input))
+                wrong_words.append((current_word_idx, main_contest_words[current_word_idx], user_input))
                 audio_data = get_and_play_word(main_contest_word_IDS[current_word_idx])
                 timestamp = int(time.time())
                 audio_url = f"/pronounce?timestamp={timestamp}"
