@@ -103,7 +103,7 @@ def check_word(user_input):
         if all(input in correct_words for input in user_inputs) and all(answer in user_inputs for answer in correct_words):
             return True
         else:
-            feedback = f"Incorrect. Correct answer: '{', '.join(correct_words)}'"
+            feedback = f"{current_word_idx}/{len(main_contest_words)}: {main_contest_word_IDS[current_word_idx]} : Incorrect. Correct answer: '{', '.join(correct_words)}'"
             return feedback
     return False
 
@@ -144,7 +144,7 @@ def index():
 def contest():
     global current_word_idx, main_contest_words, wrong_words, main_contest_word_IDS
 
-    if request.method == "POST":
+    if request.method == "POST": # post (user has inputted a guess)
         user_input = request.form["user_input"]
         feedback = check_word(user_input)
 
@@ -159,17 +159,18 @@ def contest():
                 return render_template("contest.html", current_word_idx=current_word_idx, total_words=len(main_contest_words), feedback=feedback, audio_data=audio_data, audio_url=audio_url, wrong_words=wrong_words)
 
         else:
-            if current_word_idx < len(main_contest_words):
-                wrong_words.append((main_contest_word_IDS[current_word_idx], main_contest_words[current_word_idx], user_input))
-                audio_data = get_and_play_word(main_contest_word_IDS[current_word_idx])
-                timestamp = int(time.time())
-                audio_url = f"/pronounce?timestamp={timestamp}"
+            wrong_words.append((main_contest_word_IDS[current_word_idx], main_contest_words[current_word_idx], user_input)) # erm what the sigma, why is this giving an error???
+        if current_word_idx < len(main_contest_words):
+                
+            audio_data = get_and_play_word(main_contest_word_IDS[current_word_idx])
+            timestamp = int(time.time())
+            audio_url = f"/pronounce?timestamp={timestamp}"
 
-                return render_template("contest.html", current_word_idx=current_word_idx, total_words=len(main_contest_words), feedback=feedback, audio_data=audio_data, audio_url=audio_url, wrong_words=wrong_words)
-            else:
-                return redirect(url_for("index"))
+            return render_template("contest.html", current_word_idx=current_word_idx, total_words=len(main_contest_words), feedback=feedback, audio_data=audio_data, audio_url=audio_url, wrong_words=wrong_words)
+        else:
+            return redirect(url_for("index"))
 
-    if current_word_idx < len(main_contest_words):
+    if current_word_idx < len(main_contest_words): # get (first time seeing a word)
         audio_data = get_and_play_word(main_contest_word_IDS[current_word_idx])
         timestamp = int(time.time())
         audio_url = f"/pronounce?timestamp={timestamp}"
@@ -239,3 +240,11 @@ def alt_pronounce_word():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+# (599, 'incumbency', 'encumbency')
+# (538, 'heavy-handed', 'heavy-hande')
+# (561, 'homocentric', 'homicentric')
+# (584, 'immunocompromised', 'immunocomprimised')
+# (517, 'gramineous', 'graminious')
+# (576, 'idolatry', 'idolotry')
