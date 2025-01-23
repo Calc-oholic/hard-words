@@ -80,6 +80,11 @@
             font-size: 14px;
             color: #888;
         }
+        .volume-mixer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #888;
+        }
         .accented-keyboard {
             position: absolute;
             top: 10px;
@@ -133,6 +138,12 @@
     </div>
     <div class="tip">
         <p><strong>Tip:</strong> Hold Alt and press Enter in the text box to pronounce the word.</p>
+    </div>
+    <div class="volume-mixer" id="volumeMixer">
+        <button onclick="setVolume(.25)">25%</button>
+        <button onclick="setVolume(.5)">50%</button>
+        <button onclick="setVolume(.75)">75%</button>
+        <button onclick="setVolume(1)">100%</button>
     </div>
     <div class="incorrect">
         <ul>
@@ -205,7 +216,7 @@
             inputBox.focus();
         }
 
-        function changeVolume(newVolume) {
+        function setVolume(newVolume) {//make a slider for the volume mixer instead of buttons later
             if (newVolume > 1) volume = 1; return;
             if (newVolume < 0) volume = 0; return;
             volume = newVolume;
