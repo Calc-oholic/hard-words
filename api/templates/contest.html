@@ -179,8 +179,8 @@
             var audio = document.getElementById('audio-player');
             var audioUrl = "/pronounce?" + new Date().getTime(); // Append a timestamp to the URL
             audio.src = audioUrl;
-            audio.volume = volume;
             audio.load();
+            audio.volume = volume;
             audio.play();
         }
         function pronounce_alt_word() {
@@ -216,10 +216,15 @@
             inputBox.focus();
         }
 
-        function setVolume(newVolume) {//make a slider for the volume mixer instead of buttons later
-            if (newVolume > 1) volume = 1; return;
-            if (newVolume < 0) volume = 0; return;
-            volume = newVolume;
+        function setVolume(newVolume) {
+            if (newVolume > 1) {
+                volume = 1;
+            } else if (newVolume < 0) {
+                volume = 0;
+            } else {
+                volume = newVolume;
+            }
+            console.log("Volume set to:", volume); // Optional: To verify volume changes
         }
     </script>
 </body>
