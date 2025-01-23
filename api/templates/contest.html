@@ -85,6 +85,11 @@
             font-size: 14px;
             color: #888;
         }
+        .volume-mixer-dos {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #888;
+        }
         .accented-keyboard {
             position: absolute;
             top: 10px;
@@ -144,6 +149,12 @@
         <button onclick="setVolume(.5)">50%</button>
         <button onclick="setVolume(.75)">75%</button>
         <button onclick="setVolume(1)">100%</button>
+    </div>
+    <div class="volume-mixer-dos" id="volumeMixerDos">
+        <button onclick="setVolume(1.25)">125%</button>
+        <button onclick="setVolume(1.5)">150%</button>
+        <button onclick="setVolume(1.75)">175%</button>
+        <button onclick="setVolume(2)">200%</button>
     </div>
     <div class="incorrect">
         <ul>
@@ -217,9 +228,10 @@
         }
 
         function setVolume(newVolume) {
-            if (newVolume > 1) {
-                volume = 1;
-            } else if (newVolume < 0) {
+            // if (newVolume > 1) {
+            //     volume = 1;
+            // } else 
+            if (newVolume < 0) {
                 volume = 0;
             } else {
                 volume = newVolume;
