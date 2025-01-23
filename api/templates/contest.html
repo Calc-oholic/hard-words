@@ -163,11 +163,12 @@
         <p>Credits to <a href="https://github.com/Calc-oholic/">Calc-oholic</a> and <a href="https://github.com/FollowedPlate/">FollowedPlate</a></p>
     </div>
     <script>
+        var volume = 1;
         function pronounce_word() {
             var audio = document.getElementById('audio-player');
             var audioUrl = "/pronounce?" + new Date().getTime(); // Append a timestamp to the URL
             audio.src = audioUrl;
-            audio.volume = .5;
+            audio.volume = volume;
             audio.load();
             audio.play();
         }
@@ -202,6 +203,12 @@
             inputBox.value = textBefore + accent + textAfter;
             inputBox.setSelectionRange(startPos + accent.length, startPos + accent.length);
             inputBox.focus();
+        }
+
+        function changeVolume(newVolume) {
+            if (newVolume > 1) volume = 1; return;
+            if (newVolume < 0) volume = 0; return;
+            volume = newVolume;
         }
     </script>
 </body>
