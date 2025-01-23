@@ -167,6 +167,7 @@
             var audio = document.getElementById('audio-player');
             var audioUrl = "/pronounce?" + new Date().getTime(); // Append a timestamp to the URL
             audio.src = audioUrl;
+            audio.volume = .5;
             audio.load();
             audio.play();
         }
